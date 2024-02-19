@@ -13,7 +13,10 @@
 #include <iostream>
 #include <windows.h>
 #include <conio.h>
+#include <random>
 using namespace std;
+
+void FillArray(int array[][15], int size);
 
 int main()
 {
@@ -21,6 +24,11 @@ int main()
     SetConsoleOutputCP(1251);
 
     char pressedButton;
+
+    const int sizeArr = 15;    
+    int Array[sizeArr][sizeArr];
+
+    FillArray(Array, sizeArr);
 
     cout << "Для управления программой используйте стрелочки (вперёд, назад, влево, вправо). Для выхода нажать esc" << std::endl;
 
@@ -56,4 +64,20 @@ int main()
     }   
 }
 
+void FillArray(int array[][15], int size) 
+{
+    random_device Random;
 
+    for (int x = 0; x < size; x++)
+    {
+        for (int y = 0; y < size; y++)
+        {
+            array[x][y] = Random() % 100;
+
+            cout << array[x][y] << "\t";
+        }
+
+        cout << endl;
+    }
+
+}
